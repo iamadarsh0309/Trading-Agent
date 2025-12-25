@@ -4,17 +4,26 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
   addEdge,
-  type Node,   
-  type NodeChange,
-  type EdgeChange,
-  type Connection,
+//   type Node,   
+//   type NodeChange,
+//   type EdgeChange,
+//   type Connection,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+import { Trigger } from '@radix-ui/react-dialog';
+import { TriggerSheet } from './TriggerSheet';
+
+
+ export type NodeMetadata = any;
+
+export type NodeKind = "price-trigger" | "timer-trigger" | "hyperliquid" | "backpack" | "lighter";
 
 interface NodeType {
     data: {
         type: "action" | "trigger",
-        kind: "price-trigger" | "timer-trigger" | "hyperliquid" | "backpack" | "lighter",
+        kind: NodeKind,
+        metadata: NodeMetadata,
+        label: string
     },
     id: string, position: { x: number, y: number }
 }
@@ -41,6 +50,19 @@ export default function CreateWorkflow() {
 
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
+            {!nodes.length && <TriggerSheet onSelect={(kind, metadata) => {
+                setNodes([...nodes, {
+                    id: Math.random().toString(),
+                    data: {
+                        type: "trigger",
+                        kind,
+                        metadata,
+                        label: kind
+                    },
+                    position: { x: 0, y: 0 },
+                    
+                }])
+            }} />}
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
