@@ -1,6 +1,6 @@
 
 import CreateWorkflow from './components/CreateWorkflow';
-import {Router, BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
 
@@ -9,7 +9,7 @@ export default function App() {
   return <div>
     <BrowserRouter>
       <Routes>
-        <Route path="/dashboard" element={<CreateWorkflow />} />
+        <Route path="/create-workflow" element={<CreateWorkflow />} />
       </Routes>
     </BrowserRouter>
   </div>
