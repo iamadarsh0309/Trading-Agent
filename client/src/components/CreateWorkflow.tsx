@@ -13,13 +13,15 @@ import { ActionSheet } from './ActionSheet';
 import { PriceTrigger } from '@/nodes/triggers/PriceTrigger';
 import { Timer } from '@/nodes/triggers/Timer';
 import { Lighter } from '@/nodes/actions/Lighter';
+import { Hyperliquid } from '@/nodes/actions/Hyperliquid';
+import { Backpack } from '@/nodes/actions/Backpack';
 
 const nodeTypes = {
   'price-trigger': PriceTrigger,
   'timer': Timer,
-  'hyperliquid': Lighter,
+  'hyperliquid': Hyperliquid,
   'lighter': Lighter,
-  'backpack': Lighter,
+  'backpack': Backpack,
 }
 
 export type NodeMetadata = any;

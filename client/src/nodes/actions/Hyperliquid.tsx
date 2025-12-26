@@ -1,12 +1,7 @@
 import { Handle, Position } from "@xyflow/react"
+import type { TradingMetadata } from "./Lighter"
 
-export type TradingMetadata = {
-    type: "LONG" | "SHORT",
-    qty: number,
-    symbol: string
-}
-
-export function Lighter({ data }: {
+export function Hyperliquid({ data }: {
     data: {
         metadata: TradingMetadata
     }
@@ -14,7 +9,7 @@ export function Lighter({ data }: {
     return (
         <div className="p-4 border bg-white rounded shadow-sm">
             <Handle type="target" position={Position.Left} />
-            <div className="font-medium">Lighter</div>
+            <div className="font-medium">Hyperliquid</div>
             <div className="text-sm text-gray-600">
                 <div>{data.metadata.type} {data.metadata.symbol}</div>
                 <div>Qty: {data.metadata.qty}</div>
